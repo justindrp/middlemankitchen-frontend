@@ -2,8 +2,20 @@
 import { client } from '@/sanity/lib/client'
 import imageUrlBuilder from '@sanity/image-url'
 
+interface MenuItem {
+  _id: string
+  name: string
+  description?: string
+  image?: any // can type this properly later
+  priceRegular?: number
+  priceSmall?: number
+  isSignature?: boolean
+  orderLinkGrab?: string
+  orderLinkShopee?: string
+}
+
 const builder = imageUrlBuilder(client)
-function urlFor(source: any) {
+function urlFor(source: object) {
   return builder.image(source)
 }
 
@@ -27,7 +39,7 @@ export default async function MenuPage() {
     <main className="max-w-2xl mx-auto p-4">
       <h1 className="text-3xl font-bold mb-6 text-center">Menu</h1>
       <div className="grid gap-8">
-        {menuItems.map((item: any) => (
+        {menuItems.map((item: MenuItem) => (
           <div
             key={item._id}
             className="rounded-xl shadow-md border flex flex-col md:flex-row gap-4 p-4 items-center"
