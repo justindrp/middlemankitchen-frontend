@@ -1,12 +1,14 @@
 // src/app/menu/page.tsx
 import { client } from '@/sanity/lib/client'
 import imageUrlBuilder from '@sanity/image-url'
+import type { SanityImage } from '@/sanity/types';
+// Define the structure of a menu item
 
 interface MenuItem {
   _id: string
   name: string
   description?: string
-  image?: any // can type this properly later
+  image?: SanityImage
   priceRegular?: number
   priceSmall?: number
   isSignature?: boolean
